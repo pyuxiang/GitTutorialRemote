@@ -1,0 +1,10 @@
+git config --global user.name "pyuxiang"
+git config --global user.email "pyxelise@gmail.com"
+
+In project folder:
+git init     # create empty repo
+git status   # identify untracked files, commits
+
+Staging process:
+git add <file>
+git add -A   # Adds all files in directory
