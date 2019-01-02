@@ -131,7 +131,14 @@ gpg --armour --export <sec> | clip
 # Set GPG signing key on Git config
 git config --global user.signingkey <sec>
 
+# Enable git to sign all commits by default
+git config --global commit.gpgsign true
 
+# Alternatively, add the "-S" flag when committing changes to sign them
+git commit -S -m <message>
+
+# To automate verification of GPG signing, download a GPG key manager
+# (GPG4Win for Windows) and import the key found in ~/.gnupg
 ```
 
 ## Workflows
