@@ -139,6 +139,8 @@ git commit -S -m <message>
 
 # To automate verification of GPG signing, download a GPG key manager
 # (GPG4Win for Windows) and import the key found in ~/.gnupg
+# Set the GPG signing program to that supplied by GPG4Win.
+git config --global gpg.program "C:/Program Files (x86)/GnuPG/bin/gpg.exe"
 ```
 
 ## Workflows
