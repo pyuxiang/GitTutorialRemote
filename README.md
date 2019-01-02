@@ -1,7 +1,7 @@
 # GitTutorialRemote
 A quick guide to Git and GitHub.
 
-## LINGO
+## Git Glossary
 
 #### Git / GitHub:
 Git is a distributed version control system (DVCS) that synchronizes all changes transparently and asynchronously, storing the entire codebase and its full history. Github is a Git repository hosting service providing additional tools like issues, pull requests, code review, and predominantly serves as a host for a project's central/official repository.
@@ -31,28 +31,17 @@ An object containing the information about a particular revision (e.g. parent co
 #### Downstream / Upstream / Origin:
 Describes relative positions in repository version control. Upstream refers to the repository containing the project source code. Conversely, any information copied from upstream goes downstream. Changes are pushed upstream to distribute work to other contributors. It is not uncommon for a developer to set two remotes: upstream pointing to the project and origin pointing to their own fork of the project. This allows the developer to pull enhancements directly from the original project to stay in sync.
 
-## ACTIONS
+### Other actions:
 
-#### (to) Push:
-To get the branch head from a remote (which must necessarily be an ancestor to the local head), and put all objects reachable from the local head and missing from the remote into the remote object database and updating the remote head ref.
-
-#### (to) Fetch:
-To get the branch head from a remote, and retrieve all objects missing from the local object database.
-
-#### (to) Merge:
-To bring contents from another branch into the current branch, by identifying changes made since the branches diverged and applying those changes automatically. If the branch is a descendant of the current branch, the merge is a fast-forward.
-
-#### (to) Pull:
-To fetch and merge.
-
-#### (to) Rebase:
-To reapply a series of changes from a branch to a different base and reset the head to the result.
-
-#### (to) Resolve:
-To fix manually what the failed automatic merge left behind.
-
-#### (to) Rewind:
-To throw away part of development by assigning the head to an earlier revision.
+| Actions | Description |
+| ....... | ........... |
+| Push    | To get the branch head from a remote (which must necessarily be an ancestor to the local head), and put all objects reachable from the local head and missing from the remote into the remote object database and updating the remote head ref. |
+| Fetch   | To get the branch head from a remote, and retrieve all objects missing from the local object database. |
+| Merge   | To bring contents from another branch into the current branch, by identifying changes made since the branches diverged and applying those changes automatically. If the branch is a descendant of the current branch, the merge is a fast-forward. |
+| Pull    | To fetch and merge. |
+| Rebase  | To reapply a series of changes from a branch to a different base and reset the head to the result. |
+| Resolve | To fix manually what the failed automatic merge left behind. |
+| Rewind  | To throw away part of development by assigning the head to an earlier revision. |
 
 ## First-time setup for local git repository
 ```bash
@@ -102,7 +91,7 @@ git push -u origin master
 git pull origin
 ```
 
-### First-time setup for authentication
+## First-time setup for authentication
 ```bash
 # SSH (Secure Shell Host) keys are used to connect to remote servers.
 # Open Git Bash and generate an 4096-bit RSA SSH key with email as label
