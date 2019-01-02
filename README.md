@@ -34,7 +34,7 @@ Describes relative positions in repository version control. Upstream refers to t
 ### Other actions:
 
 | Actions | Description |
-| ....... | ........... |
+|:-------:| ----------- |
 | Push    | To get the branch head from a remote (which must necessarily be an ancestor to the local head), and put all objects reachable from the local head and missing from the remote into the remote object database and updating the remote head ref. |
 | Fetch   | To get the branch head from a remote, and retrieve all objects missing from the local object database. |
 | Merge   | To bring contents from another branch into the current branch, by identifying changes made since the branches diverged and applying those changes automatically. If the branch is a descendant of the current branch, the merge is a fast-forward. |
