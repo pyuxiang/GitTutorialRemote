@@ -20,7 +20,7 @@ A reference is a path usually beginning with `.git/refs` that points to an objec
 #### Tag:
 A reference under `.git/refs/tags` namespace pointing to an object of arbitrary type. Since it is not updated by the `commit` command unlike head, it is typically used to mark a particular point in the commit ancestry chain. Tag objects contain such a ref, and possibly a message as well as a PGP signature.
 
-#### Tree / Working Tree / Index
+#### Tree / Working Tree / Index:
 An object containing a list of filenames and modes along with refs to associated blobs/tree objects, equivalent to a directory. Tree-ish is a tree object that can be recursively dereferenced to a tree object, including commit objects and symbolic refs to tree objects.
 
 The working tree refers to the tree of the actual checked out files, including local changes made but not committed. An index is a collection of files with associated information, whose contents are stored as objects, effectively a stored version of the working tree. An index entry refers to one such file.
@@ -176,13 +176,13 @@ git tag <name> <commit>      # Give commit an alias
 ```
 
 ### Reversing changes
-Detailed use cases can be found in the documentation for [git-reset](https://git-scm.com/docs/git-reset#Examples). For publicly-visible branch, use `revert` instead of `reset` to avoid forcing needless merges on other developers to clean up the history.
+Detailed use cases can be found in the documentation for [git-reset](https://git-scm.com/docs/git-reset#Examples). For publicly-visible branch, use `revert` instead of `reset` to avoid forcing needless merges on other developers to clean up the history. This [page](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/) is AMAZING!
 ```bash
 git reset --soft <commit>     # Only reset head to <commit>
 git reset --mixed <commit>    # Reset index but not working tree (default)
 git reset --hard <commit>     # Reset index and working tree
 git revert <commit>           # Reset index AND record revert as commit
-git checkout <commit> <file>  # Revert file to that that in previous commit
+git checkout <commit> <file>  # Revert file to that in previous commit
 git commit --amend            # Shortcut to modify latest commit
 ```
 
@@ -208,7 +208,7 @@ git stash list  # List all stashed working trees
 ## Getting Started
 1. Read the Git documentation: https://git-scm.com/docs
 2. Fiddle around with a Git GUI (GitHub Desktop is a great introduction, followed by SourceTree upon familiarity with git revision control).
-3. Set up a `.gitignore` file and `README.md` file in repository (https://www.gitignore.io/ and https://gist.github.com/PurpleBooth/109311bb0361f32d87a2 are useful resources).
+3. Set up a `.gitignore` file ([here's a guide](https://www.gitignore.io/)) and `README.md` file ([here's another](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)) in repository.
 4. More resources include [everyday git commands](https://git-scm.com/docs/giteveryday), recommended git [workflows](https://git-scm.com/docs/gitworkflows).
 5. Optional reading on git [architecture](https://git-scm.com/docs/gittutorial-2), [nomenclature](https://git-scm.com/docs/gitglossary), and [core low-level commands](https://git-scm.com/docs/gitcore-tutorial).
 6. Reading on SSH and GPG keys to sign your git commits: [a RyanLue blogpost](https://ryanlue.com/posts/2017-06-29-gpg-for-ssh-auth).
