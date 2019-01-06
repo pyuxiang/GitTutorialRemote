@@ -92,39 +92,36 @@ git pull origin
 ```
 
 ## First-time setup for authentication
-```bash
-# SSH (Secure Shell Host) keys are used to connect to remote servers.
-# Open Git Bash and generate an 4096-bit RSA SSH key with email as label
-ssh-keygen -t rsa -b 4096 -C <email>
+SSH (Secure Shell Host) keys are used to connect to remote servers. Note that instructions are provided for both Git Bash for Windows and the native bash in WSL (Windows Subsystem for Linux).
 
-# Start ssh-agent and add generated RSA key
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
+```bash
+ssh-keygen -t rsa -b 4096 -C <email>  # gen 4096RSA SSH key with email label
+eval $(ssh-agent -s)                  # start ssh-agent
+ssh-add ~/.ssh/id_rsa                 # add generated RSA key
 
 # Copy and add SSH public key to GitHub settings (use your browser for latter)
-clip < ~/.ssh/id_rsa.pub
+clip < ~/.ssh/id_rsa.pub              # Git Bash...
+cat ~/.ssh/id_rsa.pub | clip.exe      # ...or WSL
 
-# Then authenticate the connection with the following fingerprint:
+# Authenticate the connection with the following fingerprint:
 # SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8
 ssh -T git@github.com
+```
+GPG (GNU Privacy Guard) keys are used to sign git commits.
+```bash
+gpg --gen-key                # gen 4096RSA GPG key on Git Bash...
+gpg --full-generate-key      # ...or WSL
 
-# GPG (GNU Privacy Guard) keys are used to sign git commits.
-# Open Git Bash and generate an 4096-bit RSA GPG key
-gpg --gen-key
+# Copy and add GPG key to GitHub settings (use your browser for latter)
+gpg --list-keys --keyid-format SHORT
+gpg --armour --export <keyid> | clip         # copy key in ASCII armour format
+git config --global user.signingkey <keyid>  # set signing key in git
+git config --global commit.gpgsign true      # enable auto-signing all commits
 
-# Copy selected GPG secret key (sec id) in ASCII armour format
-# and add GPG key to GitHub settings (use your browser for latter)
-gpg --list-keys --keyid-format LONG
-gpg --armour --export <sec> | clip
-
-# Set GPG signing key on Git config
-git config --global user.signingkey <sec>
-
-# Enable git to sign all commits by default
-git config --global commit.gpgsign true
-
-# Alternatively, add the "-S" flag when committing changes to sign them
-git commit -S -m <message>
+# Note if 'error: gpg failed to sign the data' occurs and running
+# 'echo "test" | gpg --clearsign' yields `signing failed: Inappropriate ioctl for device`,
+# welcome to poor UI doc and the fix explained [here](https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705).
+export GPG_TTY=$(tty)
 
 # To automate verification of GPG signing, download a GPG key manager
 # (GPG4Win for Windows) and import the key found in ~/.gnupg
